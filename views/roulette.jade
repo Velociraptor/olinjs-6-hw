@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+
+  container(class='row', id='container')
+    div(class='span2')
+      a#ui-carousel-prev(href='#') prev
+    div(id='carousel', class='span4')
+      //img(src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRoiGYrRer8el-DuKKQ10RgYBPTWDFjKkw6aGwIFh7JkX1hjnBJTw', alt='a tulip')
+      //img(src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRulz650lh69M8DP6hTPs9xShPjdJ9SkFDpSIdW-7M-13K_5RKoXw', alt='a rose')
+      //img(src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTGw7yg-6KkHaYGAarlm3C_trB7jjKKV9iWaJET3xgKfzHCGC', alt='a daisy')
+      each friend, i in friends
+        div
+          img(src=' https://graph.facebook.com/'+friend.id+'/picture?type=large', alt='a friend')
+          div(class='row')
+            div(class='span3')='Write a comment to '+friend.name+' on your wall!'
+            div(class='row')
+            div(class='span3')
+              form(method='post', action='/comment', id='commentForm')
+                input(type='text',name='comment')
+                //input(type='hidden', name='friend', value=friend.id)
+                input(type='hidden', name='friend', value=friend.name)
+                button(type='submit')
+                  | Post Comment
+    div(class='span2')
+      a#ui-carousel-next(href='#') next
+    
