@@ -15,7 +15,6 @@ exports.comment = function(req, res){
   	console.log(err);
   	console.log(stuff);
   });
-  //console.log(req.body);
   //req.facebook.api('/https://graph.facebook.com/'+friend.userid+'/feed?message='+req.body.comment)
   res.send('You just posted the comment: '+req.body.comment);
 });
@@ -42,7 +41,7 @@ exports.show = function (req, res) {
 	        return console.log("error we couldn't create your user");
 	      };
 	      req.session.user = newUser;
-	      res.render("roulette", {title:"Hello " + person.name + '!', friends: data.data, user: user});
+	      res.render("roulette", {title:"Hello " + person.name + '!', friends: data.data, user: newUser});
 	    });
 	}
     else {
